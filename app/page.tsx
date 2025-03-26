@@ -189,7 +189,7 @@ export default function Home() {
         </CardHeader>
         <CardContent>
           <div className="flex flex-col lg:flex-row gap-8">
-            <div className="flex-1">
+            <div className="flex-1 lg:overflow-y-auto lg:max-h-[700px]">
               {!fileUploaded ? (
                 // Show only the upload tab if no file is uploaded yet
                 <div>
@@ -206,7 +206,7 @@ export default function Home() {
                 </div>
               ) : (
                 // Show file info and common issues after upload
-                <div>
+                <div className="flex flex-col gap-6">
                   {analysisError && (
                     <div className="mb-4">
                       <Badge variant="outline" className="bg-red-100 text-red-800">
@@ -235,12 +235,14 @@ export default function Home() {
                     )}
 
                     {/* Common Issues Section */}
-                    <div>
+                    <div className="flex-1">
                       <h3 className="text-lg font-semibold mb-2">Common Issues</h3>
                       <p className="text-sm text-muted-foreground mb-2">
                         Select an issue to get immediate help, or describe your problem in the chat.
                       </p>
-                      <CommonIssues onSelectIssue={handleSelectIssue} />
+                      <div>
+                        <CommonIssues onSelectIssue={handleSelectIssue} />
+                      </div>
                     </div>
 
                     {/* Upload New File Button */}
@@ -262,7 +264,7 @@ export default function Home() {
                 </div>
               )}
             </div>
-            <div className="flex-1">
+            <div className="flex-1 lg:sticky lg:top-4 self-start">
               <ChatInterface
                 onSendMessage={handleSendMessage}
                 fileUploaded={fileUploaded}
