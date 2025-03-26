@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { ScrollArea } from "@/components/ui/scroll-area"
@@ -103,12 +103,8 @@ export function CommonIssues({ onSelectIssue }: CommonIssuesProps) {
   return (
     <div>
       <Card className="border shadow-sm">
-        <CardHeader className="pb-2">
-          <CardTitle className="text-lg">Common 3D Printing Issues</CardTitle>
-          <CardDescription>Click an issue to get help or view example images</CardDescription>
-        </CardHeader>
         <CardContent className="p-0">
-          <ScrollArea className="h-[500px] px-4 pb-4">
+          <ScrollArea className="h-[500px] px-4 py-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {commonIssues.map((issue) => (
                 <div key={issue.name} className="border rounded-md overflow-hidden hover:shadow-md transition-shadow">

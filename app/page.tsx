@@ -220,45 +220,36 @@ export default function Home() {
                     {fileMetadata && (
                       <div>
                         <h3 className="text-lg font-semibold mb-2">3MF File Information</h3>
-                        <div className="bg-gray-800 text-white p-4 rounded-md">
-                          <p>
-                            <span className="font-medium">File name:</span> {fileMetadata.name}
-                          </p>
-                          <p>
-                            <span className="font-medium">Size:</span> {fileMetadata.size}
-                          </p>
-                          <p>
-                            <span className="font-medium">Last modified:</span> {fileMetadata.lastModified}
-                          </p>
+                        <div className="bg-gray-800 text-white p-3 rounded-md flex items-center justify-between">
+                          <div className="overflow-hidden">
+                            <p className="font-medium text-sm truncate">
+                              {fileMetadata.name}
+                            </p>
+                            <p className="text-xs text-gray-300">
+                              Last modified: {fileMetadata.lastModified}
+                            </p>
+                          </div>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="text-xs text-white hover:text-gray-200 h-7 ml-2"
+                            onClick={() => {
+                              setFile(null);
+                              setFileMetadata(null);
+                              setSlicingParameters(null);
+                              setFileUploaded(false);
+                              setAnalysisError(null);
+                            }}
+                          >
+                            Upload New
+                          </Button>
                         </div>
                       </div>
                     )}
 
                     {/* Common Issues Section */}
                     <div className="flex-1">
-                      <h3 className="text-lg font-semibold mb-2">Common Issues</h3>
-                      <p className="text-sm text-muted-foreground mb-2">
-                        Select an issue to get immediate help, or describe your problem in the chat.
-                      </p>
-                      <div>
-                        <CommonIssues onSelectIssue={handleSelectIssue} />
-                      </div>
-                    </div>
-
-                    {/* Upload New File Button */}
-                    <div>
-                      <Button
-                        variant="outline"
-                        onClick={() => {
-                          setFile(null);
-                          setFileMetadata(null);
-                          setSlicingParameters(null);
-                          setFileUploaded(false);
-                          setAnalysisError(null);
-                        }}
-                      >
-                        Upload a Different File
-                      </Button>
+                      <CommonIssues onSelectIssue={handleSelectIssue} />
                     </div>
                   </div>
                 </div>
