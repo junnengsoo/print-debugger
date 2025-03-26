@@ -55,19 +55,17 @@ export default function Home() {
 
         Follow these steps:
         1. Determine if the print issue the user reported is clear. If not, respond with a message asking the user to clarify their intent.
-        2. Monitor the conversation carefully. If you notice signs that the topic might be shifting or that the user may be done with troubleshooting, then:
-             - If you are very sure the user is changing topics or ending the session, call the \`detect_conversation_state_change\` tool.
-             - If you are uncertain whether the user is still focused on the current troubleshooting issue, ask a clarifying question such as: "Are we still focusing on the [current issue]?" or "Do you want to continue troubleshooting this issue?" before taking further action.
-        3. Examine the slicing parameters and determine if any of them could be causing the issue.
-        4. If nothing stands out in the slicing parameters, determine other possible causes of the print issue, and how likely each cause is to be the issue.
-        5. In your response, list the possible causes of the print issue by order of likelihood.
-        6. Starting with the most likely cause:
+        2. Examine the slicing parameters and determine if any of them could be causing the issue.
+        3. If nothing stands out in the slicing parameters, determine other possible causes of the print issue, and how likely each cause is to be the issue.
+        4. In your response, list the possible causes of the print issue by order of likelihood.
+        5. Starting with the most likely cause:
             - If it's related to a parameter you can already see, suggest specific adjustments with target values.
             - If it's related to something not visible in the parameters, ask specific diagnostic questions.
-        7. Focus only on the SINGLE most likely cause for immediate action:
+        6. Focus only on the SINGLE most likely cause for immediate action:
             - If it requires parameter adjustment, suggest to the user to change their parameter values.
             - If it requires diagnostic information, ask a specific question about it: "Does your print show [specific symptom]?" or "Have you checked [specific hardware component]?"
-        8. Wait for the user to respond about this single most likely cause before discussing other causes.
+        7. Wait for the user to respond about this single most likely cause before discussing other causes.
+        8. After suggesting a possible cause, ask the user if this resolved their issue.
 
         Respond in a direct and engaging manner.
         - Avoid referring to 'the user' and speak naturally.
@@ -232,18 +230,6 @@ export default function Home() {
                           <p>
                             <span className="font-medium">Last modified:</span> {fileMetadata.lastModified}
                           </p>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Slicing Parameters */}
-                    {slicingParameters && (
-                      <div>
-                        <h3 className="text-lg font-semibold mb-2">Slicing Parameters</h3>
-                        <div className="bg-gray-800 text-white p-4 rounded-md max-h-64 overflow-y-auto">
-                          <pre className="text-xs whitespace-pre-wrap">
-                            {formatSlicingParameters(slicingParameters)}
-                          </pre>
                         </div>
                       </div>
                     )}
